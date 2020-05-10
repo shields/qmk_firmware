@@ -19,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer */
     [BASE] = LAYOUT_ergodox(
 	// left hand
-	KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_BRIU,
+	KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_BRID,
 	KC_DEL,          KC_Q,        KC_G,          KC_M,    KC_L,    KC_W,    KC_LOPT,
 	LCTL_T(KC_ESC),  KC_D,        KC_S,          KC_T,    KC_N,    KC_R,
 	KC_LSPO,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_J,    KC_LCMD,
@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_BSPC, KC_TAB, KC_END,
 
 	// right hand
-	KC_BRID,      KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
+	KC_BRIU,      KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
 	KC_ROPT,      KC_Y,    KC_F,    KC_U,    KC_B,              KC_SCLN,        KC_EQL,
 	KC_I,         KC_A,    KC_E,    KC_O,    KC_H,              RCTL_T(KC_QUOT),
 	KC_RCMD,      KC_K,    KC_P,    KC_COMM, KC_DOT,            KC_SLSH,        KC_RSPC,
