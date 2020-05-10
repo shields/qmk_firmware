@@ -94,47 +94,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Runs whenever there is a layer state change.
 layer_state_t layer_state_set_user(layer_state_t state) {
-  ergodox_board_led_off();
-  ergodox_right_led_1_off(); // red
-  ergodox_right_led_2_off(); // green
-  ergodox_right_led_3_off(); // blue
+    uint8_t layer = get_highest_layer(state);
+    switch (layer) {
+    case BASE:
+	ergodox_right_led_1_off();
+	ergodox_right_led_3_off();
+	break;
+    case SYMB:
+	ergodox_right_led_1_set(32);
+	ergodox_right_led_1_on();
+	ergodox_right_led_3_off();
+	break;
+    case MDIA:
+	ergodox_right_led_1_off();
+	ergodox_right_led_3_set(32);
+	ergodox_right_led_3_on();
+	break;
+    }
 
-  uint8_t layer = get_highest_layer(state);
-  switch (layer) {
-  case 0:
-      break;
-  case 1:
-      ergodox_right_led_1_on();
-      break;
-  case 2:
-      ergodox_right_led_2_on();
-      break;
-  case 3:
-      ergodox_right_led_3_on();
-      break;
-  case 4:
-      ergodox_right_led_1_on();
-      ergodox_right_led_2_on();
-      break;
-  case 5:
-      ergodox_right_led_1_on();
-      ergodox_right_led_3_on();
-      break;
-  case 6:
-      ergodox_right_led_2_on();
-      ergodox_right_led_3_on();
-      break;
-  case 7:
-      ergodox_right_led_1_on();
-      ergodox_right_led_2_on();
-      ergodox_right_led_3_on();
-      break;
-  default:
-      break;
-  }
-
-  return state;
+    return state;
 };
+
+bool led_update_user(led_t led_state) {
+    if (led_state.caps_lock) {
+        ergodox_right_led_2_set(24);
+	ergodox_right_led_2_on();
+    } else {
+	ergodox_right_led_2_off();
+    }
+    return true;
+}
 
 void eeconfig_init_user(void) {
     set_unicode_input_mode(UC_MAC);
